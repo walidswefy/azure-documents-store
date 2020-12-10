@@ -1,0 +1,27 @@
+server:
+  port: 8012
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+
+#Add as environment variable for encrypted properties
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD}
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true

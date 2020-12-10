@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    include:
+      - elk
+  data:
+    rest:
+      detection-strategy: explicit_method_annotated
+
+server:
+  error.include-stacktrace: never
+

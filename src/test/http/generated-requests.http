@@ -1,0 +1,14 @@
+###
+POST http://localhost:8012/store/record
+Content-Type: application/json
+
+{
+  "key": "test",
+  "value": "value"
+}
+
+###
+GET http://localhost:8012/store/record?key=test
+
+<> 2020-11-14T062139.200.txt
+<> 2020-11-14T061902.500.json

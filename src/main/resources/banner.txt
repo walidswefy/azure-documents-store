@@ -1,0 +1,9 @@
+   _____         __  __ _____  _      ______            _____  _____
+  / ____|  /\   |  \/  |  __ \| |    |  ____|     /\   |  __ \|  __ \
+ | (___   /  \  | \  / | |__) | |    | |__       /  \  | |__) | |__) |
+  \___ \ / /\ \ | |\/| |  ___/| |    |  __|     / /\ \ |  ___/|  ___/
+  ____) / ____ \| |  | | |    | |____| |____   / ____ \| |    | |
+ |_____/_/    \_\_|  |_|_|    |______|______| /_/    \_\_|    |_|
+
+Running Spring Boot ${spring-boot.version} ::  Active Profile ${AnsiColor.MAGENTA}${spring.profiles.active}
+${AnsiColor.BLACK}Walid Sewaify :: s.walid@gmail.com

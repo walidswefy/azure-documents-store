@@ -1,0 +1,7 @@
+version: '2'
+services:
+  service-mongodb:
+    container_name: ${APP_NAME}-mongo
+    image: mongo:4.2.7
+    ports:
+      - '${DB_PORT}:27017'
