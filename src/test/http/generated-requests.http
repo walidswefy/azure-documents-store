@@ -1,14 +1,27 @@
+# upload sample file
+# curl -X PUT http://localhost:8012/upload/wella       --form file=@hello.txt
+PUT http://localhost:8014/upload/test-container
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="hello.txt"
+
+< hello.txt
+--WebAppBoundary--
+
 ###
-POST http://localhost:8012/store/record
-Content-Type: application/json
 
-{
-  "key": "test",
-  "value": "value"
-}
+# upload many files
+PUT http://localhost:8014/v1/uploadMany/test-container
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="hello.txt"
+
+< hello.txt
+--WebAppBoundary--
 
 ###
-GET http://localhost:8012/store/record?key=test
 
-<> 2020-11-14T062139.200.txt
-<> 2020-11-14T061902.500.json
+#list files if test-container
+GET http://localhost:8014/list/test-container

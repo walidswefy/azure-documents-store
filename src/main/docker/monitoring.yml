@@ -5,11 +5,6 @@ services:
       file: app.yml
       service: service-mainapp
 
-  service-mongodb:
-    extends:
-      file: mongodb.yml
-      service: service-mongodb
-
   service-prometheus:
     container_name: ${APP_NAME}-prometheus
     image: prom/prometheus:v2.18.1

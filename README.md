@@ -1,17 +1,14 @@
-Sample API Provider
+Cloud-based Document Management System
 ====================
 
 ## What is that?
 
-This project is a code baseline that can be used to quickly develop modern API-based applications 
-that can fit within Monolithic or Microservices architecture.
+Document storage service backed by Azure Blob Storage that provides scalable management of document files (upload, download)
 
 ## Technology Stack
 
 - `java`, `spring-boot`, `spring-web`
   [core]
-- `mongodb`, `flapdoodle`
-  [database]
 - `git`, `maven`
   [code & build]
 - `logback`, `filebeat`, `elastic-search`, `kibana`
@@ -39,7 +36,7 @@ build docker image:
 mvn com.google.cloud.tools:jib-maven-plugin:2.4.0:dockerBuild
 ```
 
-run [application](http://localhost:8012/) or browse [swagger](http://localhost:8012/swagger-ui.html) documentation:
+run [application](http://localhost:8014/) or browse [swagger](http://localhost:8014/swagger-ui.html) documentation:
 
 ```bash
 docker-compose -f app.yml up -d
@@ -77,29 +74,3 @@ mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar -P dev,son
 * **dev**: default profile, activates spring-boot-devtools for development environment
 * **sonar**: activates jacoco for generating code coverage reports, and sonar for code feedback
 
-### Unit & Integration Testing
-Unit tests cover testing of individual components. 
-External dependencies are usually mocked to isolate tested units.
-
-Integration tests (classes tagged with `@it` or `@integration`) cover end-to-end testing.
-The application uses in memory database for testing database integration.
-
-> Integration tests are slow and run separately using different build cycle (maven verify) 
-
-### Maven Tools
-Maven utilizes The following list of plugins and dependencies
-
-* **sonar**: code quality
-* **jacoco**: code coverage reports
-* **jib**: building docker image
-* **git-commit-id**: generating git.properties within application artifact to track the code version
-* **surefire**: unit testing (`mvn test`)
-* **fail-safe**: integration testing (`mvn verify`)
-* **jasypt**: encrypting sensitive profile values (mainly in prod profile)
-
-### References
-
-[#JHipster](https://www.jhipster.tech/)
-[#Elastic](https://www.elastic.co/)
-[#Docker](https://www.docker.com/)
-[#Grafana](https://grafana.com/)

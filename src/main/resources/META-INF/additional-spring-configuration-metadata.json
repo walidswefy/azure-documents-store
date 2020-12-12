@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "azure.maxFileSize",
+      "type": "java.lang.String",
+      "description": "maximum file size in MB"
+    }
+  ]
+}

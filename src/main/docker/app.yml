@@ -4,12 +4,11 @@ services:
     container_name: ${APP_NAME}-main
     image: ${APP_IMAGE}
     ports:
-      - '${APP_PORT}:8012'
+      - '${APP_PORT}:${CONTAINER_PORT}'
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=dev,swagger,elk
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATA_MONGODB_URI=mongodb://service-mongodb:27017/${DB_NAME}
     labels:
       # Register container to filebeat via autodiscovery
       - co.elastic.metrics/hosts='elasticsearch:9200'
@@ -17,9 +16,5 @@ services:
       - co.elastic.logs/json.add_error_key=true
       - co.elastic.logs/json.message_key=message
       - co.elastic.metrics/metricsets=status
-  service-mongodb:
-    extends:
-      file: mongodb.yml
-      service: service-mongodb
 
 

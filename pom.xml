@@ -9,10 +9,10 @@
         <relativePath/>
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>sample-app</artifactId>
+    <artifactId>azure-docs-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sample-app</name>
-    <description>Sample project to quickly build your project baseline</description>
+    <name>azure-docs-service</name>
+    <description>Document Management APIs based on Azure Blob Storage</description>
 
     <properties>
         <java.version>8</java.version>
@@ -20,7 +20,7 @@
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
 
-        <docker.image.name>sampleapp</docker.image.name>
+        <docker.image.name>docservice</docker.image.name>
         <test.results.directory>${project.build.directory}/test-results</test.results.directory>
         <junit.itReportFolder>${test.results.directory}/integrationTest</junit.itReportFolder>
         <junit.utReportFolder>${test.results.directory}/test</junit.utReportFolder>
@@ -51,15 +51,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>de.flapdoodle.embed</groupId>-->
+<!--            <artifactId>de.flapdoodle.embed.mongo</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -108,6 +108,22 @@
                     <artifactId>logback-access</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-common</artifactId>
+            <version>12.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>12.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-storage</artifactId>
+            <version>8.6.5</version>
         </dependency>
     </dependencies>
 
