@@ -1,13 +1,10 @@
 package com.example.api.storage.controller;
 
-import com.example.api.storage.exception.FileStorageException;
 import com.example.api.storage.model.FileProperties;
 import com.example.api.storage.model.view.FileResponse;
 import com.example.api.storage.service.FileStorageService;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -34,21 +31,12 @@ import java.util.stream.Collectors;
 @RequestMapping({"", "v1"})
 @Slf4j
 @RequiredArgsConstructor
-@Data
 public class FileStorageController {
     private final FileStorageService azureStorageService;
 
-    @Value("${azure.maxFileSize}")
-    private long maxFileSize = 20;
-
     @PutMapping("/upload/{containerName}")
     public FileResponse uploadFile(@PathVariable String containerName,
-                                   @RequestBody MultipartFile file) {
-        System.out.println(maxFileSize);
-        if (file == null || file.getSize() > (maxFileSize * 1024 * 1024L)) {
-            throw new FileStorageException("File is required within allowed maximum size " + maxFileSize + "MB");
-        }
-
+                                   @RequestParam MultipartFile file) {
         FileProperties properties = azureStorageService.uploadFile(containerName, file);
         log.info("file uploaded successfully with following details : {}", properties);
 
@@ -57,7 +45,7 @@ public class FileStorageController {
 
     @PutMapping("/uploadMany/{containerName}")
     public List<FileResponse> uploadMultipleFiles(@PathVariable String containerName,
-                                                  @RequestBody MultipartFile[] files) {
+                                                  @RequestParam MultipartFile[] files) {
         return Arrays.stream(files).map(file -> uploadFile(containerName, file)).collect(Collectors.toList());
     }
 
