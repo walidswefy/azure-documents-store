@@ -14,7 +14,6 @@ azure:
   accountName: testdocsstorage
   accountKey: ${ACCOUNT_KEY}
   endpoint: https://${azure.accountName}.blob.core.windows.net
-  maxFileSize: 20
 
 #Add as environment variable for encrypted properties
 jasypt:
